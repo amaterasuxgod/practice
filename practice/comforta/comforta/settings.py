@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 # new
+import os
 import django_heroku
 import dj_database_url
 
@@ -27,9 +28,11 @@ SECRET_KEY = 'mldg$1$_sopvkf%o1gbmyn4bx8g#ob*x5-!i6gqhovvbz9=a*i'
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = [*]
+
+ALLOWED_HOSTS = ['localhost', '127.0.0.1',
+                 '[::1]', 'young-plains-26409.herokuapp.com']
 
 AUTH_USER_MODEL = 'users.User'
 
@@ -149,6 +152,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# new
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-django_heroku.settings(locals())
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)

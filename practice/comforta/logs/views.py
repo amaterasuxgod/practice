@@ -11,7 +11,6 @@ from users.models import User
 import json
 from rest_framework.pagination import PageNumberPagination
 
-
 # Create your views here.
 
 
